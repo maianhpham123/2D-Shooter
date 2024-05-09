@@ -41,6 +41,8 @@
 		042231542BE9288600E038A0 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../../../../../../../Volumes/Data/game/assets; sourceTree = "<group>"; };
 		042231582BE9385300E038A0 /* stage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stage.cpp; sourceTree = "<group>"; };
 		042231592BE9385300E038A0 /* stage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stage.hpp; sourceTree = "<group>"; };
+		04CE265A2BEA94B500E4F5A8 /* util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
+		04CE265B2BEA94B500E4F5A8 /* util.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,8 @@
 				042231452BE9229100E038A0 /* main.hpp */,
 				042231582BE9385300E038A0 /* stage.cpp */,
 				042231592BE9385300E038A0 /* stage.hpp */,
+				04CE265A2BEA94B500E4F5A8 /* util.cpp */,
+				04CE265B2BEA94B500E4F5A8 /* util.hpp */,
 			);
 			path = "2D Shooter";
 			sourceTree = "<group>";

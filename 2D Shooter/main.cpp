@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     float remainder;
     
     memset(&app, 0, sizeof(App));
-    memset(&player, 0, sizeof(Entity));
+    memset(&stage, 0, sizeof(Stage));
     
     initSDL();
     atexit(cleanup);

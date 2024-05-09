@@ -31,6 +31,8 @@ void initSDL() {
         cerr << "Could not create renderer: " << SDL_GetError() << endl;
         exit(1);
     }
+    
+    SDL_ShowCursor(0);
 }
 
 void cleanup() {

@@ -9,6 +9,7 @@
 #define stage_hpp
 
 #include "commons.h"
+#include "util.cpp"
 
 extern App app;
 extern Stage stage;
