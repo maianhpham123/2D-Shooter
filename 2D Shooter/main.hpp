@@ -15,12 +15,6 @@
 #include "draw.cpp"
 #include "stage.cpp"
 
-extern void initSDL();
-extern void cleanup();
-extern void prepareScene();
-extern void doInput();
-extern void presentScene();
-
 App app;
 Stage stage;
 

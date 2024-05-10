@@ -8,7 +8,7 @@
 #include "draw.hpp"
 
 void prepareScene() {
-    SDL_SetRenderDrawColor(app.renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(app.renderer, 0, 0, 0, 0);
     SDL_RenderClear(app.renderer);
 }
 

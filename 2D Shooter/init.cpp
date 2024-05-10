@@ -32,11 +32,26 @@ void initSDL() {
         exit(1);
     }
     
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) {
+        cerr << "Could not open mixer!" << endl;
+        exit(1);
+    }
+    
+    if (TTF_Init() == -1) {
+        cerr << "Could not open Fonts!" << TTF_GetError() << endl;
+        exit(1);
+    }
+    
+    Mix_AllocateChannels(MAX_SND_CHANNELS);
+    
     SDL_ShowCursor(0);
 }
 
 void cleanup() {
     SDL_DestroyRenderer(app.renderer);
     SDL_DestroyWindow(app.window);
+    IMG_Quit();
+    TTF_Quit();
+    Mix_Quit();
     SDL_Quit();
 }

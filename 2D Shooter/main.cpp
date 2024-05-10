@@ -16,8 +16,10 @@ int main(int argc, char* argv[])
     memset(&stage, 0, sizeof(Stage));
     
     initSDL();
-    atexit(cleanup);
     initStage();
+    initSound();
+    
+    atexit(cleanup);
     
     then = SDL_GetTicks();
     remainder = 0;

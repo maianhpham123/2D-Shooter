@@ -33,6 +33,7 @@ static void doExplosion();
 static void doDebris();
 static void addExplosion(int x, int y, int number);
 static void addDebris(Entity* e);
+static void drawHud();
 
 static Entity* player;
 static SDL_Texture* bulletTexture;
@@ -45,8 +46,8 @@ static SDL_Texture* explosionTexture;
 static int enemySpawnTimer;
 static int stageResetTimer;
 
-int backgroundX = 0;
-Star star[MAX_STARS];
+static int backgroundX = 0;
+static Star star[MAX_STARS];
 
 void initStage() {
     app.delegate.logic = logic;
@@ -65,11 +66,15 @@ void initStage() {
     background = loadTexture("assets/background.png");
     explosionTexture = loadTexture("assets/explosion.png");
     
+    memset(&app.keyboard, 0, sizeof(int) * MAX_KEYBOARD_KEYS);
+    
     resetStage();
     
     initPlayer();
+    initStarField();
     
     enemySpawnTimer = 0;
+    stageResetTimer = FPS * 3;
 }
 
 static void initPlayer() {
@@ -130,8 +135,7 @@ static void resetStage() {
     stage.explosionTail = &stage.explosionHead;
     stage.debrisTail = &stage.debrisHead;
     
-    initStarField();
-    stageResetTimer = FPS * 3;
+    stage.score = 0;
 }
 
 static void logic() {
@@ -174,10 +178,11 @@ static void doPlayer() {
         if (player->reload > 0) player->reload--;
         
         if (app.keyboard[SDL_SCANCODE_UP]) player->dy = -PLAYER_SPEED;
-        if (app.keyboard[SDL_SCANCODE_DOWN]) player->dy = +PLAYER_SPEED;
+        if (app.keyboard[SDL_SCANCODE_DOWN]) player->dy = PLAYER_SPEED;
         if (app.keyboard[SDL_SCANCODE_LEFT]) player->dx = -PLAYER_SPEED;
-        if (app.keyboard[SDL_SCANCODE_RIGHT]) player->dx = +PLAYER_SPEED;
+        if (app.keyboard[SDL_SCANCODE_RIGHT]) player->dx = PLAYER_SPEED;
         if (app.keyboard[SDL_SCANCODE_LSHIFT] && player->reload == 0) {
+            playSound(SND_PLAYER_FIRE, CH_PLAYER);
             fireBullet();
         }
     }
@@ -197,6 +202,7 @@ static void doEnemy() {
     for (e = stage.fighterHead.next; e != NULL; e = e->next) {
         if (e != player && player != NULL && --e->reload <= 0) {
             fireAlienBullet(e);
+            playSound(SND_ALIEN_FIRE, CH_ALIEN_FIRE);
         }
     }
 }
@@ -213,7 +219,7 @@ static void fireAlienBullet(Entity* e) {
     bullet->y = e->y;
     bullet->health = 1;
     bullet->texture = alienBulletTexture;
-    bullet->side = SIDE_ALIEN;
+    bullet->side = e->side;
     SDL_QueryTexture(bullet->texture, NULL, NULL, &bullet->w, &bullet->h);
     
     bullet->x += (e->w / 2) - (bullet->w / 2);
@@ -239,11 +245,13 @@ static void fireBullet() {
     bullet->dx = PLAYER_BULLET_SPEED;
     bullet->health = 1;
     bullet->texture = bulletTexture;
-    bullet->side = SIDE_PLAYER;
+    bullet->side = player->side;
     
     SDL_QueryTexture(bullet->texture, NULL, NULL, &bullet->w, &bullet->h);
     
     bullet->y += (player->h / 2) - (bullet->h / 2);
+    
+    bullet->side = SIDE_PLAYER;
     player->reload = 8;
 }
 
@@ -275,6 +283,12 @@ static int bulletHitFighter(Entity* b) {
         if  (e->side != b->side && collision(b->x, b->y, b->w, b->h, e->x, e->y, e->w, e->h)) {
             b->health = 0;
             e->health = 0;
+            
+            if (e == player) playSound(SND_PLAYER_DIE, CH_PLAYER);
+            else {
+                playSound(SND_ALIEN_DIE, CH_ANY);
+                stage.score++;
+            }
             
             addExplosion(e->x, e->y, 32);
             addDebris(e);
@@ -453,13 +467,14 @@ static void draw() {
     drawBullet();
     drawExplosion();
     drawDebris();
+    drawHud();
 }
 
 static void drawBackground() {
     SDL_Rect dest;
     int x;
     
-    for (x = backgroundX; x < SCREEN_WIDTH; x++) {
+    for (x = backgroundX; x < SCREEN_WIDTH; x+= SCREEN_WIDTH) {
         dest.x = x;
         dest.y = 0;
         dest.w = SCREEN_WIDTH;
@@ -511,6 +526,11 @@ static void drawBullet() {
     for (b = stage.bulletHead.next; b != NULL; b = b->next) {
         blit(b->texture, b->x, b->y);
     }
+}
+
+//TODO: add
+static void drawHud() {
+    drawText("SCORE: ", 32, 10, 10);
 }
 
 static void capFrameRate(long* then, float* remainder) {
