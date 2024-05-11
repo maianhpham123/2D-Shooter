@@ -30,7 +30,8 @@ const char* WINDOW_TITLE = "SHOOTER";
 enum {
     CH_ANY = -1,
     CH_PLAYER,
-    CH_ALIEN_FIRE
+    CH_ALIEN_FIRE,
+    CH_POINT
 };
 
 enum {
@@ -38,6 +39,7 @@ enum {
     SND_ALIEN_FIRE,
     SND_PLAYER_DIE,
     SND_ALIEN_DIE,
+    SND_POINT,
     SND_MAX
 };
 

@@ -23,6 +23,7 @@ static void loadSound() {
     sounds[SND_ALIEN_FIRE] = Mix_LoadWAV("sound/196914__dpoggioli__laser-gun.ogg");
     sounds[SND_PLAYER_DIE] = Mix_LoadWAV("sound/245372__quaker540__hq-explosion.ogg");
     sounds[SND_ALIEN_DIE] = Mix_LoadWAV("sound/10 Guage Shotgun-SoundBible.com-74120584.ogg");
+    sounds[SND_POINT] = Mix_LoadWAV("sound/mixkit-space-coin-win-notification-271.wav");
 }
 
 void loadMusic(const char* filename) {

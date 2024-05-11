@@ -34,6 +34,9 @@ static void doDebris();
 static void addExplosion(int x, int y, int number);
 static void addDebris(Entity* e);
 static void drawHud();
+static void doPointsPod();
+static void addPointsPod(int x, int y);
+static void drawPointPod();
 
 static Entity* player;
 static SDL_Texture* bulletTexture;
@@ -42,12 +45,14 @@ static SDL_Texture* playerTexture;
 static SDL_Texture* alienBulletTexture;
 static SDL_Texture* background;
 static SDL_Texture* explosionTexture;
+static SDL_Texture* pointTexture;
 
 static int enemySpawnTimer;
 static int stageResetTimer;
 
 static int backgroundX = 0;
 static Star star[MAX_STARS];
+static int highscore = 0;
 
 void initStage() {
     app.delegate.logic = logic;
@@ -65,6 +70,7 @@ void initStage() {
     playerTexture = loadTexture("assets/player.png");
     background = loadTexture("assets/background.png");
     explosionTexture = loadTexture("assets/explosion.png");
+    pointTexture = loadTexture("assets/points.png");
     
     memset(&app.keyboard, 0, sizeof(int) * MAX_KEYBOARD_KEYS);
     
@@ -130,10 +136,17 @@ static void resetStage() {
         free(e);
     }
     
+    while(stage.pointHead.next) {
+        e = stage.pointHead.next;
+        stage.pointHead.next = e->next;
+        free(e);
+    }
+    
     stage.fighterTail = &stage.fighterHead;
     stage.bulletTail = &stage.bulletHead;
     stage.explosionTail = &stage.explosionHead;
     stage.debrisTail = &stage.debrisHead;
+    stage.pointTail = &stage.pointHead;
     
     stage.score = 0;
 }
@@ -149,6 +162,7 @@ static void logic() {
     clipPlayer();
     doExplosion();
     doDebris();
+    doPointsPod();
     
     if (player == NULL && --stageResetTimer <= 0) {
         resetStage();
@@ -287,7 +301,7 @@ static int bulletHitFighter(Entity* b) {
             if (e == player) playSound(SND_PLAYER_DIE, CH_PLAYER);
             else {
                 playSound(SND_ALIEN_DIE, CH_ANY);
-                stage.score++;
+                addPointsPod(e->x + e->w / 2, e->y + e->h / 2);
             }
             
             addExplosion(e->x, e->y, 32);
@@ -323,6 +337,72 @@ static void doFighter() {
         
         prev = e;
     }
+}
+
+static void doPointsPod() {
+    Entity *e, *prev;
+    prev = &stage.pointHead;
+    for (e = stage.pointHead.next; e != NULL; e = e->next) {
+        if (e->x < 0) {
+            e->x = 0;
+            e->dx = -e->dx;
+        }
+        
+        if (e->x + e->w > SCREEN_WIDTH) {
+            e->x = SCREEN_WIDTH - e->w;
+            e->dx = -e->dx;
+        }
+        
+        if (e->y < 0) {
+            e->y = 0;
+            e->dy = -e->dy;
+        }
+        
+        if (e->y + e->h > SCREEN_HEIGHT) {
+            e->y = SCREEN_HEIGHT - e->h;
+            e->dy = -e->dy;
+        }
+        
+        e->x += e->dx;
+        e->y += e->dy;
+        
+        if (player != NULL && collision(e->x, e->y, e->w, e->h, player->x, player->y, player->w, player->h)) {
+            e->health = 0;
+            stage.score++;
+            highscore = max(stage.score, highscore);
+            playSound(SND_POINT, CH_POINT);
+        }
+        
+        if (--e->health <= 0) {
+            if (e == stage.pointTail) {
+                stage.pointTail = prev;
+            }
+            
+            prev->next = e->next;
+            free(e);
+            e= prev;
+        }
+        
+        prev = e;
+    }
+}
+
+static void addPointsPod(int x, int y) {
+    Entity* e;
+    e = (Entity*)malloc(sizeof(Entity));
+    memset(e, 0, sizeof(Entity));
+    stage.pointTail->next = e;
+    stage.pointTail = e;
+    
+    e->x = x;
+    e->y = y;
+    e->dx = -(rand() % 5);
+    e->dy = (rand() % 5) - (rand() % 5);
+    e->health = FPS * 10;
+    e->texture = pointTexture;
+    
+    SDL_QueryTexture(pointTexture, NULL, NULL, &e->w, &e->h);
+    
 }
 
 static void spawnEnemy() {
@@ -467,6 +547,7 @@ static void draw() {
     drawBullet();
     drawExplosion();
     drawDebris();
+    drawPointPod();
     drawHud();
 }
 
@@ -528,9 +609,26 @@ static void drawBullet() {
     }
 }
 
-//TODO: add
+static void drawPointPod() {
+    Entity* e;
+    for (e = stage.pointHead.next; e != NULL; e = e->next) {
+        blit(e->texture, e->x, e->y);
+    }
+}
+
 static void drawHud() {
-    drawText("SCORE: ", 32, 10, 10);
+    const char *text1, *text2;
+    int score = stage.score;
+    char scoreText[20];  // Assuming the score won't exceed 20 digits
+    char highscoreText[20];
+    
+    text1 = "SCORE: ";
+    text2 = "HIGHSCORE: ";
+    
+    sprintf(scoreText, "%s %d", text1, score);
+    sprintf(highscoreText, "%s %d", text2, highscore);
+    drawText(scoreText, 32, 10, 10);
+    drawText(highscoreText, 32, 1000, 10);
 }
 
 static void capFrameRate(long* then, float* remainder) {
