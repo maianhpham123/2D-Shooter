@@ -13,7 +13,7 @@ void initSDL() {
     renderFlags = SDL_RENDERER_ACCELERATED;
     windowFlags = 0;
     
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         cerr << "Could not initialise: " << SDL_GetError() << endl;
         exit(1);
     }
@@ -40,6 +40,10 @@ void initSDL() {
     if (TTF_Init() == -1) {
         cerr << "Could not open Fonts!" << TTF_GetError() << endl;
         exit(1);
+    }
+    
+    if (!Mix_Init(MIX_INIT_OGG | MIX_INIT_MP3)) {
+        cerr << "Could not open Music!" << Mix_GetError() << endl;
     }
     
     Mix_AllocateChannels(MAX_SND_CHANNELS);
