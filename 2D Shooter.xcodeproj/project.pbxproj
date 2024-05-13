@@ -14,10 +14,10 @@
 		042231312BE8BEE300E038A0 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042231302BE8BEE300E038A0 /* SDL2_ttf.framework */; };
 		042231332BE8BEE500E038A0 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042231322BE8BEE500E038A0 /* SDL2.framework */; };
 		042231462BE9229100E038A0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 042231442BE9229100E038A0 /* main.cpp */; };
-		042231552BE9288600E038A0 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 042231542BE9288600E038A0 /* assets */; };
-		042D83BE2BEDE35B00E28FC4 /* VeniteAdoremus-rgRBA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 042D83BD2BEDE35B00E28FC4 /* VeniteAdoremus-rgRBA.ttf */; };
-		048DBB8D2BED4F0100FCEFA8 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 048DBB8B2BED4F0000FCEFA8 /* sound */; };
-		048DBB8E2BED4F0100FCEFA8 /* music in Resources */ = {isa = PBXBuildFile; fileRef = 048DBB8C2BED4F0000FCEFA8 /* music */; };
+		0423058E2BF25EEB003D1CC5 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 0423058A2BF25EEB003D1CC5 /* assets */; };
+		0423058F2BF25EEB003D1CC5 /* music in Resources */ = {isa = PBXBuildFile; fileRef = 0423058B2BF25EEB003D1CC5 /* music */; };
+		042305902BF25EEB003D1CC5 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 0423058C2BF25EEB003D1CC5 /* sound */; };
+		042305912BF25EEB003D1CC5 /* VeniteAdoremus-rgRBA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0423058D2BF25EEB003D1CC5 /* VeniteAdoremus-rgRBA.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,14 +41,14 @@
 		042231412BE921F400E038A0 /* draw.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = draw.hpp; sourceTree = "<group>"; };
 		042231442BE9229100E038A0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		042231452BE9229100E038A0 /* main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
-		042231542BE9288600E038A0 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../../../../../../../Volumes/Data/game/assets; sourceTree = "<group>"; };
 		042231582BE9385300E038A0 /* stage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stage.cpp; sourceTree = "<group>"; };
 		042231592BE9385300E038A0 /* stage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stage.hpp; sourceTree = "<group>"; };
+		0423058A2BF25EEB003D1CC5 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = "../../../../Volumes/Data/game/2D Shooter/assets"; sourceTree = "<group>"; };
+		0423058B2BF25EEB003D1CC5 /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; name = music; path = "../../../../Volumes/Data/game/2D Shooter/music"; sourceTree = "<group>"; };
+		0423058C2BF25EEB003D1CC5 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = "../../../../Volumes/Data/game/2D Shooter/sound"; sourceTree = "<group>"; };
+		0423058D2BF25EEB003D1CC5 /* VeniteAdoremus-rgRBA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "VeniteAdoremus-rgRBA.ttf"; path = "../../../../Volumes/Data/game/2D Shooter/VeniteAdoremus-rgRBA.ttf"; sourceTree = "<group>"; };
 		042D83B82BEDDAFB00E28FC4 /* text.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = text.cpp; sourceTree = "<group>"; };
 		042D83B92BEDDAFB00E28FC4 /* text.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = text.hpp; sourceTree = "<group>"; };
-		042D83BD2BEDE35B00E28FC4 /* VeniteAdoremus-rgRBA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "VeniteAdoremus-rgRBA.ttf"; path = "../../../../../../Downloads/venite-adoremus-font/VeniteAdoremus-rgRBA.ttf"; sourceTree = "<group>"; };
-		048DBB8B2BED4F0000FCEFA8 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = "../../../../../../Downloads/Shoot-em-up-INT2215-2022-main/sound"; sourceTree = "<group>"; };
-		048DBB8C2BED4F0000FCEFA8 /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; name = music; path = "../../../../../../Downloads/Shoot-em-up-INT2215-2022-main/music"; sourceTree = "<group>"; };
 		048DBB902BED505600FCEFA8 /* sound.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cpp; sourceTree = "<group>"; };
 		048DBB912BED505600FCEFA8 /* sound.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sound.hpp; sourceTree = "<group>"; };
 		04CE265A2BEA94B500E4F5A8 /* util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
@@ -80,10 +80,10 @@
 			children = (
 				042231122BE8BC9600E038A0 /* 2D Shooter */,
 				042231112BE8BC9600E038A0 /* Products */,
-				042D83BD2BEDE35B00E28FC4 /* VeniteAdoremus-rgRBA.ttf */,
-				048DBB8C2BED4F0000FCEFA8 /* music */,
-				048DBB8B2BED4F0000FCEFA8 /* sound */,
-				042231542BE9288600E038A0 /* assets */,
+				0423058A2BF25EEB003D1CC5 /* assets */,
+				0423058B2BF25EEB003D1CC5 /* music */,
+				0423058C2BF25EEB003D1CC5 /* sound */,
+				0423058D2BF25EEB003D1CC5 /* VeniteAdoremus-rgRBA.ttf */,
 				042231292BE8BEDD00E038A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -213,10 +213,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				048DBB8D2BED4F0100FCEFA8 /* sound in Resources */,
-				042231552BE9288600E038A0 /* assets in Resources */,
-				042D83BE2BEDE35B00E28FC4 /* VeniteAdoremus-rgRBA.ttf in Resources */,
-				048DBB8E2BED4F0100FCEFA8 /* music in Resources */,
+				042305912BF25EEB003D1CC5 /* VeniteAdoremus-rgRBA.ttf in Resources */,
+				0423058E2BF25EEB003D1CC5 /* assets in Resources */,
+				0423058F2BF25EEB003D1CC5 /* music in Resources */,
+				042305902BF25EEB003D1CC5 /* sound in Resources */,
 				042231172BE8BC9800E038A0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
