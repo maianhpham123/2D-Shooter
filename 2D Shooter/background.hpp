@@ -2,7 +2,7 @@
 //  background.hpp
 //  2D Shooter
 //
-//  Created by Mai Anh Pham on 5/10/24.
+//  Created by Mai Anh Pham on 5/12/24.
 //
 
 #ifndef background_hpp

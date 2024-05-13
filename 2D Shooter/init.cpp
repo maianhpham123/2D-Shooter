@@ -47,6 +47,14 @@ void initSDL() {
     SDL_ShowCursor(0);
 }
 
+void initGame() {
+    initBackground();
+    initStarField();
+    initSound();
+    loadMusic("music/Meteor - Death Race (Round 2) (128 kbps).mp3");
+    playMusic(1);
+}
+
 void cleanup() {
     SDL_DestroyRenderer(app.renderer);
     SDL_DestroyWindow(app.window);

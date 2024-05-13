@@ -17,7 +17,9 @@ int main(int argc, char* argv[])
     
     initSDL();
     initStage();
-    initSound();
+    
+    initGame();
+    initGameOver();
     
     atexit(cleanup);
     

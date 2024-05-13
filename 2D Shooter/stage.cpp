@@ -26,7 +26,6 @@ static void resetStage();
 static void clipPlayer();
 static void doEnemy();
 static void fireAlienBullet(Entity* e);
-static void initStarField();
 static void doBackground();
 static void doStarField();
 static void doExplosion();
@@ -43,16 +42,13 @@ static SDL_Texture* bulletTexture;
 static SDL_Texture* enemyTexture;
 static SDL_Texture* playerTexture;
 static SDL_Texture* alienBulletTexture;
-static SDL_Texture* background;
 static SDL_Texture* explosionTexture;
 static SDL_Texture* pointTexture;
 
 static int enemySpawnTimer;
 static int stageResetTimer;
 
-static int backgroundX = 0;
-static Star star[MAX_STARS];
-static int highscore = 0;
+static int highscore = stage.highScore = 0;
 
 void initStage() {
     app.delegate.logic = logic;
@@ -68,7 +64,6 @@ void initStage() {
     enemyTexture = loadTexture("assets/enemy.png");
     alienBulletTexture = loadTexture("assets/alienBullet.png");
     playerTexture = loadTexture("assets/player.png");
-    background = loadTexture("assets/background.png");
     explosionTexture = loadTexture("assets/explosion.png");
     pointTexture = loadTexture("assets/points.png");
     
@@ -77,7 +72,6 @@ void initStage() {
     resetStage();
     
     initPlayer();
-    initStarField();
     
     enemySpawnTimer = 0;
     stageResetTimer = FPS * 3;
@@ -96,15 +90,6 @@ static void initPlayer() {
     player->side = SIDE_PLAYER;
     
     SDL_QueryTexture(player->texture, NULL, NULL, &player->w, &player->h);
-}
-
-static void initStarField() {
-    int i;
-    for (i = 0; i < MAX_STARS; i++) {
-        star[i].x = rand() % SCREEN_WIDTH;
-        star[i].y = rand() % SCREEN_HEIGHT;
-        star[i].speed = 1 + rand() % 8;
-    }
 }
 
 static void resetStage() {
@@ -166,22 +151,7 @@ static void logic() {
     
     if (player == NULL && --stageResetTimer <= 0) {
         resetStage();
-    }
-}
-
-static void doBackground() {
-    if(--backgroundX < -SCREEN_WIDTH) {
-        backgroundX = 0;
-    }
-}
-
-static void doStarField() {
-    int i;
-    for (i = 0; i < MAX_STARS; i++) {
-        star[i].x -= star[i].speed;
-        if (star[i].x < 0) {
-            star[i].x = SCREEN_WIDTH + star[i].x;
-        }
+        initGameOver();
     }
 }
 
@@ -551,29 +521,6 @@ static void draw() {
     drawHud();
 }
 
-static void drawBackground() {
-    SDL_Rect dest;
-    int x;
-    
-    for (x = backgroundX; x < SCREEN_WIDTH; x+= SCREEN_WIDTH) {
-        dest.x = x;
-        dest.y = 0;
-        dest.w = SCREEN_WIDTH;
-        dest.h = SCREEN_HEIGHT;
-        
-        SDL_RenderCopy(app.renderer, background, NULL, &dest);
-    }
-}
-
-static void drawStarField() {
-    int i, c;
-    for (i = 0; i < MAX_STARS; i++) {
-        c = 32 * star[i].speed;
-        SDL_SetRenderDrawColor(app.renderer, c, c, c, 255);
-        SDL_RenderDrawLine(app.renderer, star[i].x, star[i].y, star[i].x + 3, star[i].y);
-    }
-}
-
 static void drawExplosion() {
     Explosion* e;
     SDL_SetRenderDrawBlendMode(app.renderer, SDL_BLENDMODE_ADD);
@@ -619,7 +566,7 @@ static void drawPointPod() {
 static void drawHud() {
     const char *text1, *text2;
     int score = stage.score;
-    char scoreText[20];  // Assuming the score won't exceed 20 digits
+    char scoreText[20];
     char highscoreText[20];
     
     text1 = "SCORE: ";

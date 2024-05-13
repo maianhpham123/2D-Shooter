@@ -47,14 +47,16 @@
 		042D83B82BEDDAFB00E28FC4 /* text.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = text.cpp; sourceTree = "<group>"; };
 		042D83B92BEDDAFB00E28FC4 /* text.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = text.hpp; sourceTree = "<group>"; };
 		042D83BD2BEDE35B00E28FC4 /* VeniteAdoremus-rgRBA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "VeniteAdoremus-rgRBA.ttf"; path = "../../../../../../Downloads/venite-adoremus-font/VeniteAdoremus-rgRBA.ttf"; sourceTree = "<group>"; };
-		048DBB862BED3EA600FCEFA8 /* background.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = background.cpp; sourceTree = "<group>"; };
-		048DBB872BED3EA600FCEFA8 /* background.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = background.hpp; sourceTree = "<group>"; };
 		048DBB8B2BED4F0000FCEFA8 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = "../../../../../../Downloads/Shoot-em-up-INT2215-2022-main/sound"; sourceTree = "<group>"; };
 		048DBB8C2BED4F0000FCEFA8 /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; name = music; path = "../../../../../../Downloads/Shoot-em-up-INT2215-2022-main/music"; sourceTree = "<group>"; };
 		048DBB902BED505600FCEFA8 /* sound.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cpp; sourceTree = "<group>"; };
 		048DBB912BED505600FCEFA8 /* sound.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sound.hpp; sourceTree = "<group>"; };
 		04CE265A2BEA94B500E4F5A8 /* util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
 		04CE265B2BEA94B500E4F5A8 /* util.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
+		04D4B7522BF0F5B70012E3ED /* background.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = background.cpp; sourceTree = "<group>"; };
+		04D4B7532BF0F5B70012E3ED /* background.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = background.hpp; sourceTree = "<group>"; };
+		04D4B7572BF126010012E3ED /* gameOver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gameOver.cpp; sourceTree = "<group>"; };
+		04D4B7582BF126010012E3ED /* gameOver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gameOver.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,12 +117,14 @@
 				042231592BE9385300E038A0 /* stage.hpp */,
 				04CE265A2BEA94B500E4F5A8 /* util.cpp */,
 				04CE265B2BEA94B500E4F5A8 /* util.hpp */,
-				048DBB862BED3EA600FCEFA8 /* background.cpp */,
-				048DBB872BED3EA600FCEFA8 /* background.hpp */,
 				048DBB902BED505600FCEFA8 /* sound.cpp */,
 				048DBB912BED505600FCEFA8 /* sound.hpp */,
 				042D83B82BEDDAFB00E28FC4 /* text.cpp */,
 				042D83B92BEDDAFB00E28FC4 /* text.hpp */,
+				04D4B7522BF0F5B70012E3ED /* background.cpp */,
+				04D4B7532BF0F5B70012E3ED /* background.hpp */,
+				04D4B7572BF126010012E3ED /* gameOver.cpp */,
+				04D4B7582BF126010012E3ED /* gameOver.hpp */,
 			);
 			path = "2D Shooter";
 			sourceTree = "<group>";

@@ -10,6 +10,12 @@
 
 #include "commons.h"
 
+static void initBackground();
+static void initStarField();
+static void initSound();
+static void loadMusic(const char* filename);
+static void playMusic(int loop);
+
 extern App app;
 
 #endif /* init_hpp */

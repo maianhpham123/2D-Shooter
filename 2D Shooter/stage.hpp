@@ -12,6 +12,8 @@
 #include "util.cpp"
 #include "sound.cpp"
 #include "text.cpp"
+#include "background.cpp"
+#include "gameOver.cpp"
 
 extern App app;
 extern Stage stage;

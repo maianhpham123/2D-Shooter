@@ -67,6 +67,7 @@ typedef struct {
     Debris debrisHead, *debrisTail;
     Entity pointHead, *pointTail;
     int score;
+    int highScore;
 } Stage;
 
 typedef struct {
