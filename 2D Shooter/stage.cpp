@@ -48,6 +48,7 @@ static SDL_Texture* pointTexture;
 static int enemySpawnTimer;
 static int stageResetTimer;
 
+static int score = stage.score = 0;
 static int highscore = stage.highScore = 0;
 
 void initStage() {
@@ -133,7 +134,7 @@ static void resetStage() {
     stage.debrisTail = &stage.debrisHead;
     stage.pointTail = &stage.pointHead;
     
-    stage.score = 0;
+    score = 0;
 }
 
 static void logic() {
@@ -150,6 +151,8 @@ static void logic() {
     doPointsPod();
     
     if (player == NULL && --stageResetTimer <= 0) {
+        stage.score = score;
+        stage.highScore = highscore;
         resetStage();
         initGameOver();
     }
@@ -338,8 +341,8 @@ static void doPointsPod() {
         
         if (player != NULL && collision(e->x, e->y, e->w, e->h, player->x, player->y, player->w, player->h)) {
             e->health = 0;
-            stage.score++;
-            highscore = max(stage.score, highscore);
+            score++;
+            highscore = max(score, highscore);
             playSound(SND_POINT, CH_POINT);
         }
         
@@ -565,7 +568,6 @@ static void drawPointPod() {
 
 static void drawHud() {
     const char *text1, *text2;
-    int score = stage.score;
     char scoreText[20];
     char highscoreText[20];
     

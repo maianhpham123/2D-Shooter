@@ -102,29 +102,10 @@
 				042231162BE8BC9800E038A0 /* Assets.xcassets */,
 				0422311B2BE8BC9800E038A0 /* Info.plist */,
 				0422311E2BE8BC9800E038A0 /* _D_Shooter.entitlements */,
-				042231282BE8BE5B00E038A0 /* defs.h */,
-				042231342BE8BF4000E038A0 /* structs.h */,
-				042231362BE8C04B00E038A0 /* init.cpp */,
-				042231372BE8C04B00E038A0 /* init.hpp */,
-				0422313A2BE91E9D00E038A0 /* commons.h */,
-				0422313C2BE920D900E038A0 /* input.cpp */,
-				0422313D2BE920D900E038A0 /* input.hpp */,
-				042231402BE921F400E038A0 /* draw.cpp */,
-				042231412BE921F400E038A0 /* draw.hpp */,
+				0423054D2BF1FF11003D1CC5 /* headers */,
+				0423054E2BF1FF3E003D1CC5 /* src */,
 				042231442BE9229100E038A0 /* main.cpp */,
 				042231452BE9229100E038A0 /* main.hpp */,
-				042231582BE9385300E038A0 /* stage.cpp */,
-				042231592BE9385300E038A0 /* stage.hpp */,
-				04CE265A2BEA94B500E4F5A8 /* util.cpp */,
-				04CE265B2BEA94B500E4F5A8 /* util.hpp */,
-				048DBB902BED505600FCEFA8 /* sound.cpp */,
-				048DBB912BED505600FCEFA8 /* sound.hpp */,
-				042D83B82BEDDAFB00E28FC4 /* text.cpp */,
-				042D83B92BEDDAFB00E28FC4 /* text.hpp */,
-				04D4B7522BF0F5B70012E3ED /* background.cpp */,
-				04D4B7532BF0F5B70012E3ED /* background.hpp */,
-				04D4B7572BF126010012E3ED /* gameOver.cpp */,
-				04D4B7582BF126010012E3ED /* gameOver.hpp */,
 			);
 			path = "2D Shooter";
 			sourceTree = "<group>";
@@ -139,6 +120,41 @@
 				0422312A2BE8BEDD00E038A0 /* SDL2_image.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0423054D2BF1FF11003D1CC5 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				042231282BE8BE5B00E038A0 /* defs.h */,
+				042231342BE8BF4000E038A0 /* structs.h */,
+				0422313A2BE91E9D00E038A0 /* commons.h */,
+				042231372BE8C04B00E038A0 /* init.hpp */,
+				0422313D2BE920D900E038A0 /* input.hpp */,
+				042231412BE921F400E038A0 /* draw.hpp */,
+				04CE265B2BEA94B500E4F5A8 /* util.hpp */,
+				048DBB912BED505600FCEFA8 /* sound.hpp */,
+				042D83B92BEDDAFB00E28FC4 /* text.hpp */,
+				04D4B7532BF0F5B70012E3ED /* background.hpp */,
+				042231592BE9385300E038A0 /* stage.hpp */,
+				04D4B7582BF126010012E3ED /* gameOver.hpp */,
+			);
+			name = headers;
+			sourceTree = "<group>";
+		};
+		0423054E2BF1FF3E003D1CC5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				042231362BE8C04B00E038A0 /* init.cpp */,
+				0422313C2BE920D900E038A0 /* input.cpp */,
+				042231402BE921F400E038A0 /* draw.cpp */,
+				04CE265A2BEA94B500E4F5A8 /* util.cpp */,
+				048DBB902BED505600FCEFA8 /* sound.cpp */,
+				042D83B82BEDDAFB00E28FC4 /* text.cpp */,
+				04D4B7522BF0F5B70012E3ED /* background.cpp */,
+				042231582BE9385300E038A0 /* stage.cpp */,
+				04D4B7572BF126010012E3ED /* gameOver.cpp */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
