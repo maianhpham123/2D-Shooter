@@ -14,6 +14,7 @@
 #include "input.cpp"
 #include "draw.cpp"
 #include "stage.cpp"
+#include "title.cpp"
 
 App app;
 Stage stage;

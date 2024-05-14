@@ -16,10 +16,9 @@ int main(int argc, char* argv[])
     memset(&stage, 0, sizeof(Stage));
     
     initSDL();
-    initStage();
-    
+    initTitle();
     initGame();
-    initGameOver();
+    initStage();
     
     atexit(cleanup);
     

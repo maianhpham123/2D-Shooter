@@ -33,12 +33,16 @@ static void gameOverLogic() {
     if(app.keyboard[SDL_SCANCODE_LSHIFT]) {
         initStage();
     }
+    
+    if(app.keyboard[SDL_SCANCODE_ESCAPE]) {
+        cleanup();
+    }
 }
 
 static void gameOverDraw() {
     drawBackground();
     drawStarField();
-    drawScore(stage.score, stage.highScore); //TODO: change score
+    drawScore(stage.score, stage.highScore); 
 }
 
 static void drawScore(int score, int highScore) {
@@ -54,5 +58,6 @@ static void drawScore(int score, int highScore) {
     drawText(scoreText, 50, 425, 230);
     drawText(highscoreText, 50, 425, 330);
     
-    drawText("PRESS FIRE TO PLAY!", 32, 425, 600);
+    drawText("PRESS FIRE TO PLAY!", 25, 500, 550);
+    drawText("PRESS ESC TO EXIT!", 25, 500, 600);
 }

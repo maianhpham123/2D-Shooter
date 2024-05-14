@@ -42,7 +42,7 @@ void initSDL() {
         exit(1);
     }
     
-    if (!Mix_Init(MIX_INIT_OGG | MIX_INIT_MP3)) {
+    if (!Mix_Init(MIX_INIT_OGG | MIX_INIT_MP3 | MIX_INIT_WAVPACK)) {
         cerr << "Could not open Music!" << Mix_GetError() << endl;
     }
     

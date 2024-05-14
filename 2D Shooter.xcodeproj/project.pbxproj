@@ -47,6 +47,8 @@
 		0423058B2BF25EEB003D1CC5 /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; name = music; path = "../../../../Volumes/Data/game/2D Shooter/music"; sourceTree = "<group>"; };
 		0423058C2BF25EEB003D1CC5 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = "../../../../Volumes/Data/game/2D Shooter/sound"; sourceTree = "<group>"; };
 		0423058D2BF25EEB003D1CC5 /* VeniteAdoremus-rgRBA.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "VeniteAdoremus-rgRBA.ttf"; path = "../../../../Volumes/Data/game/2D Shooter/VeniteAdoremus-rgRBA.ttf"; sourceTree = "<group>"; };
+		0424E2422BF2E82D00C3D059 /* title.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = title.cpp; sourceTree = "<group>"; };
+		0424E2432BF2E82D00C3D059 /* title.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = title.hpp; sourceTree = "<group>"; };
 		042D83B82BEDDAFB00E28FC4 /* text.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = text.cpp; sourceTree = "<group>"; };
 		042D83B92BEDDAFB00E28FC4 /* text.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = text.hpp; sourceTree = "<group>"; };
 		048DBB902BED505600FCEFA8 /* sound.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cpp; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				04D4B7532BF0F5B70012E3ED /* background.hpp */,
 				042231592BE9385300E038A0 /* stage.hpp */,
 				04D4B7582BF126010012E3ED /* gameOver.hpp */,
+				0424E2432BF2E82D00C3D059 /* title.hpp */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				04D4B7522BF0F5B70012E3ED /* background.cpp */,
 				042231582BE9385300E038A0 /* stage.cpp */,
 				04D4B7572BF126010012E3ED /* gameOver.cpp */,
+				0424E2422BF2E82D00C3D059 /* title.cpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
