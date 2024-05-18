@@ -9,11 +9,13 @@
 #define stage_hpp
 
 #include "commons.h"
+
 #include "util.cpp"
 #include "sound.cpp"
 #include "text.cpp"
 #include "background.cpp"
 #include "gameOver.cpp"
+#include "textBox.cpp"
 
 extern App app;
 extern Stage stage;

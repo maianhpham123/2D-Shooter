@@ -13,17 +13,25 @@
 typedef struct Entity Entity;
 typedef struct Explosion Explosion;
 typedef struct Debris Debris;
+typedef struct Texture Texture;
 
 typedef struct {
     void (*logic) ();
     void (*draw) ();
 } Delegate;
 
+struct Texture{
+    SDL_Texture* texture;
+    Texture* next;
+    char name[MAX_NAME_LENGTH];
+};
+
 typedef struct {
     SDL_Renderer* renderer;
     SDL_Window* window;
     Delegate delegate;
     int keyboard[MAX_KEYBOARD_KEYS];
+    Texture textureHead, *textureTail;
 } App;
 
 struct Entity {

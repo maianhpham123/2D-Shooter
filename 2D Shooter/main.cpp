@@ -13,14 +13,12 @@ int main(int argc, char* argv[])
     float remainder;
     
     memset(&app, 0, sizeof(App));
-    memset(&stage, 0, sizeof(Stage));
+    app.textureTail = &app.textureHead;
     
     initSDL();
-    initTitle();
-    initGame();
-    initStage();
-    
     atexit(cleanup);
+    initGame();
+    initTitle();
     
     then = SDL_GetTicks();
     remainder = 0;

@@ -32,7 +32,7 @@ void initSDL() {
         exit(1);
     }
     
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) {
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1) {
         cerr << "Could not open mixer!" << endl;
         exit(1);
     }

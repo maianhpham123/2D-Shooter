@@ -12,7 +12,7 @@ static void titleDraw();
 static void drawLogo();
 
 static SDL_Texture* shooterTexture;
-static int titleTimeout;
+
 static int reveal = 0;
 
 void initTitle() {
@@ -22,8 +22,6 @@ void initTitle() {
     memset(app.keyboard, 0, sizeof(int) * MAX_KEYBOARD_KEYS);
     
     shooterTexture = loadTexture("assets/shooter.png");
-    
-    titleTimeout = FPS * 5;
 }
 
 static void titleLogic() {
@@ -35,6 +33,7 @@ static void titleLogic() {
     }
     
     if (app.keyboard[SDL_SCANCODE_LSHIFT]) {
+        if (shooterTexture) SDL_DestroyTexture(shooterTexture);
         initStage();
     }
 }
@@ -43,10 +42,7 @@ static void titleDraw() {
     drawBackground();
     drawStarField();
     drawLogo();
-    
-    if (titleTimeout % 40 < 20) {
-            drawText("PRESS FIRE TO PLAY!", 25,500,600);
-    }
+    drawText("PRESS SHIFT TO FIRE!", 25,470,600);
 }
 
 static void drawLogo() {

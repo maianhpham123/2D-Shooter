@@ -16,10 +16,35 @@ void presentScene() {
     SDL_RenderPresent(app.renderer);
 }
 
+static SDL_Texture* getTexture(const char* filename) {
+    Texture* t;
+    for (t = app.textureHead.next; t != NULL; t = t->next) {
+        if (strcmp(t->name, filename) == 0) {
+            return t->texture;
+        }
+    }
+    return NULL;
+}
+
+static void addTextureToCache(const char* filename, SDL_Texture* tex) {
+    Texture* texture = (Texture*) malloc(sizeof(Texture));
+    memset(texture, 0, sizeof(Texture));
+
+    app.textureTail->next = texture;
+    app.textureTail = texture;
+
+    STRNCPY(texture->name, filename, MAX_NAME_LENGTH);
+    texture->texture = tex;
+}
+
 SDL_Texture* loadTexture(const char* filename) {
     SDL_Texture* texture;
-    SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Loading: %s", filename);
-    texture = IMG_LoadTexture(app.renderer, filename);
+    texture = getTexture(filename);
+    if (texture == NULL) {
+        SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Loading: %s", filename);
+        texture = IMG_LoadTexture(app.renderer, filename);
+        addTextureToCache(filename, texture);
+    }
     return texture;
 }
 

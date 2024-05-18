@@ -14,6 +14,7 @@ static Mix_Music* music;
 
 void initSound() {
     memset(sounds, 0, sizeof(Mix_Chunk*) * SND_MAX);
+    //cerr << "Sounds ID: " << sounds << endl;
     music = NULL;
     loadSound();
 }
@@ -43,3 +44,4 @@ void playMusic(int loop) {
 void playSound(int id, int channel) {
     Mix_PlayChannel(channel, sounds[id], 0);
 }
+

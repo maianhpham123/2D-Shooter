@@ -48,6 +48,8 @@ static SDL_Texture* pointTexture;
 static int enemySpawnTimer;
 static int stageResetTimer;
 
+static int play = 1;
+
 static int score = stage.score = 0;
 static int highscore = stage.highScore = 0;
 
@@ -74,6 +76,7 @@ void initStage() {
     
     initPlayer();
     
+    score = 0;
     enemySpawnTimer = 0;
     stageResetTimer = FPS * 3;
 }
@@ -133,8 +136,6 @@ static void resetStage() {
     stage.explosionTail = &stage.explosionHead;
     stage.debrisTail = &stage.debrisHead;
     stage.pointTail = &stage.pointHead;
-    
-    score = 0;
 }
 
 static void logic() {
@@ -153,8 +154,8 @@ static void logic() {
     if (player == NULL && --stageResetTimer <= 0) {
         stage.score = score;
         stage.highScore = highscore;
-        resetStage();
         initGameOver();
+        play--;
     }
 }
 
@@ -259,9 +260,9 @@ static void doBullet() {
             free(b);
             b = prev;
         }
+        
+        prev = b;
     }
-    
-    prev = b;
 }
 
 static int bulletHitFighter(Entity* b) {
@@ -522,6 +523,9 @@ static void draw() {
     drawDebris();
     drawPointPod();
     drawHud();
+    if (play == 1) {
+        drawTextBox();
+    }
 }
 
 static void drawExplosion() {
@@ -562,7 +566,9 @@ static void drawBullet() {
 static void drawPointPod() {
     Entity* e;
     for (e = stage.pointHead.next; e != NULL; e = e->next) {
-        blit(e->texture, e->x, e->y);
+        if (e->health > (FPS * 2) || e->health % 12 <6) {
+            blit(e->texture, e->x, e->y);
+        }
     }
 }
 

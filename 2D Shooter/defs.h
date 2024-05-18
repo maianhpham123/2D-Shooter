@@ -27,6 +27,9 @@ const char* WINDOW_TITLE = "SHOOTER";
 
 #define MAX_SND_CHANNELS 8
 
+#define STRNCPY(dest, src, n) strncpy(dest, src, n); dest[n-1] = '\0'
+#define MAX_NAME_LENGTH 32
+
 enum {
     CH_ANY = -1,
     CH_PLAYER,
