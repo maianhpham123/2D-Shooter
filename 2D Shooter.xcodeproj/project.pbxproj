@@ -19,7 +19,6 @@
 		042305902BF25EEB003D1CC5 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 0423058C2BF25EEB003D1CC5 /* sound */; };
 		042305912BF25EEB003D1CC5 /* VeniteAdoremus-rgRBA.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0423058D2BF25EEB003D1CC5 /* VeniteAdoremus-rgRBA.ttf */; };
 		04ECE42B2BF8923D0019AA0D /* general.png in Resources */ = {isa = PBXBuildFile; fileRef = 04ECE42A2BF8923D0019AA0D /* general.png */; };
-		04ECE42F2BF8A0D30019AA0D /* choosePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04ECE42D2BF8A0D30019AA0D /* choosePlayer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -246,7 +245,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				042231462BE9229100E038A0 /* main.cpp in Sources */,
-				04ECE42F2BF8A0D30019AA0D /* choosePlayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,6 +37,8 @@ static void doPointsPod();
 static void addPointsPod(int x, int y);
 static void drawPointPod();
 
+static void renderPauseScreen();
+
 static Entity* player;
 static SDL_Texture* bulletTexture;
 static SDL_Texture* enemyTexture;
@@ -49,6 +51,7 @@ static int enemySpawnTimer;
 static int stageResetTimer;
 
 static int play = 1;
+static bool isPaused = false;
 
 static int score = stage.score = 0;
 static int highscore = stage.highScore = 0;
@@ -79,6 +82,8 @@ void initStage() {
     score = 0;
     enemySpawnTimer = 0;
     stageResetTimer = FPS * 3;
+    
+    isPaused = false;
 }
 
 static void initPlayer() {
@@ -157,6 +162,10 @@ static void logic() {
         initGameOver();
         play--;
     }
+    
+    //TODO: add
+    if (app.keyboard[SDL_SCANCODE_SPACE]) isPaused = !isPaused;
+    //if(isPaused) renderPauseScreen();
 }
 
 static void doPlayer() {
@@ -526,6 +535,8 @@ static void draw() {
     if (play == 1) {
         drawTextBox();
     }
+    
+    if(isPaused) renderPauseScreen();
 }
 
 static void drawExplosion() {
@@ -584,6 +595,14 @@ static void drawHud() {
     sprintf(highscoreText, "%s %d", text2, highscore);
     drawText(scoreText, 32, 10, 10);
     drawText(highscoreText, 32, 1000, 10);
+}
+
+static void renderPauseScreen() {
+    // Render pause overlay (semi-transparent black overlay)
+    SDL_SetRenderDrawBlendMode(app.renderer, SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawColor(app.renderer, 0x00, 0x00, 0x00, 100);
+    SDL_Rect overlay = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+    SDL_RenderFillRect(app.renderer, &overlay);
 }
 
 static void capFrameRate(long* then, float* remainder) {
