@@ -144,6 +144,11 @@ static void resetStage() {
 }
 
 static void logic() {
+    if (app.keyboard[SDL_SCANCODE_SPACE]) isPaused = !isPaused;
+    if(isPaused) {
+        return;
+    }
+
     doBackground();
     doStarField();
     doPlayer();
@@ -162,10 +167,6 @@ static void logic() {
         initGameOver();
         play--;
     }
-    
-    //TODO: add
-    if (app.keyboard[SDL_SCANCODE_SPACE]) isPaused = !isPaused;
-    //if(isPaused) renderPauseScreen();
 }
 
 static void doPlayer() {
@@ -590,19 +591,22 @@ static void drawHud() {
     
     text1 = "SCORE: ";
     text2 = "HIGHSCORE: ";
-    
+
     sprintf(scoreText, "%s %d", text1, score);
     sprintf(highscoreText, "%s %d", text2, highscore);
     drawText(scoreText, 32, 10, 10);
     drawText(highscoreText, 32, 1000, 10);
 }
 
+//TODO: finish the pause state
 static void renderPauseScreen() {
     // Render pause overlay (semi-transparent black overlay)
     SDL_SetRenderDrawBlendMode(app.renderer, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(app.renderer, 0x00, 0x00, 0x00, 100);
     SDL_Rect overlay = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
     SDL_RenderFillRect(app.renderer, &overlay);
+    drawText("Game Paused", 40, 470, SCREEN_HEIGHT / 2 - 100);
+    drawText("Press SPACE to Continue", 25, 430, SCREEN_HEIGHT / 2 - 10);
 }
 
 static void capFrameRate(long* then, float* remainder) {
