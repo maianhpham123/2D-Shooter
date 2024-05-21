@@ -77,6 +77,14 @@ typedef struct {
     int score;
     int highScore;
 } Stage;
+/*
+    head: act as a head for the linked list, though not an actual but rather
+a placeholder to simplify the list management. The next pointer of 'head' points
+to the first actual Node of the list
+    tail: point to the last bullet in the linked list. It is used to effieciently
+append new Node to the end of the list without needing to tranverse the entire list
+ => simplify adding, removing and iterating through the linked list
+ */
 
 typedef struct {
     int x;

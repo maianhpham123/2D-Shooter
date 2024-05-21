@@ -41,7 +41,7 @@ void playMusic(int loop) {
     Mix_PlayMusic(music, (loop) ? -1 : 0);
 }
 
-void playSound(int id, int channel) {
+void playSound(const int id, const int channel) {
     Mix_PlayChannel(channel, sounds[id], 0);
 }
 

@@ -45,7 +45,7 @@ static void gameOverDraw() {
     drawScore(stage.score, stage.highScore); 
 }
 
-static void drawScore(int score, int highScore) {
+static void drawScore(const int score, const int highScore) {
     const char *text1, *text2;
     char scoreText[20];
     char highscoreText[20];

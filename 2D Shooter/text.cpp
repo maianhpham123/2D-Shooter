@@ -11,7 +11,7 @@ static TTF_Font* font;
 static SDL_Texture* textureText;
 
 
-void drawText(const char* text, int size, int x, int y) {
+void drawText(const char* text, const int size, const int x, const int y) {
     font = TTF_OpenFont("VeniteAdoremus-rgRBA.ttf", size);
     if (font == NULL) {
         cerr << "Could not load font!" << endl;
