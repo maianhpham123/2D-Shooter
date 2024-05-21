@@ -18,6 +18,9 @@
 - Ấn SPACE để dừng / tiếp tục chơi
 
 ## Các kĩ năng áp dụng trong code game
+- Chia chương trình thành các file để dễ quản lý
+- Cách code không cần comment để nắm được lần gần nhất mình đang làm đến phần nào
+- Cách dùng const (code an toàn)
 - Quản lí objects bằng linked list (chủ yếu là thêm và xoá các items khỏi linked list), xử lý đạn bắn bằng linked list
 - Collision detection
 - Slope calculation: áp dụng để đạn của kẻ địch luôn bắn vào vị trí người chơi
