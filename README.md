@@ -42,3 +42,6 @@
 ## Nguồn tham khảo
 - Game: https://www.parallelrealities.co.uk/tutorials/shooter/shooter1.php, https://www.youtube.com/watch?v=mrsT_WofAQ0
 - SDL2: https://www.youtube.com/watch?v=QM4WW8hcsPU&list=PLvv0ScY6vfd-p1gSnbQhY7vMe2rng0IL0, https://lazyfoo.net/tutorials/SDL/index.php, https://wiki.libsdl.org/wiki/index (bao gồm cả SDL2_image, SDL2_mixer và SDL2_ttf)
+
+## Link đến repository bài hàng tuần
+https://github.com/maianhpham123/GameProject.git
