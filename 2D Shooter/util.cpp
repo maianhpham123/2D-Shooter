@@ -12,15 +12,16 @@ int collision (const int x1, const int y1, const int w1, const int h1, const int
 }
 
 void calcSlope (const int x1, const int y1, const int x2, const int y2, float* dx, float* dy) {
-    int step = max(abs(x1 - x2), abs(y1 - y2));
-    
-    if (step == 0) {
-        *dx = *dy = 0;
-        return;
-    }
-    
-    *dx = (x1 - x2);
-    *dx /= step;
-    *dy = (y1 - y2);
-    *dy /= step;
+    int deltaX = abs(x1 - x2);
+        int deltaY = abs(y1 - y2);
+        int maxDelta = (deltaX > deltaY) ? deltaX : deltaY;
+        
+        if (maxDelta == 0) {
+            *dx = 0;
+            *dy = 0;
+            return;
+        }
+        
+        *dx = (float)(x1 - x2) / maxDelta;
+        *dy = (float)(y1 - y2) / maxDelta;
 }
